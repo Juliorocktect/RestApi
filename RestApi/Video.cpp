@@ -1,15 +1,19 @@
+/*
 #include <string.h>
 #include <string>
 #include <chrono>
 #include <random>
 #include "Comment.cpp"
-using namespace std;
+using std::string;
 
 class Video
 {
 public:
-	Video(string title, string userId, string profilePicture, string videoUrl, string thumbnailUrl,vector<Comment> comments);
+	Video(string title, string userId, string profilePicture, string videoUrl, string thumbnailUrl);
 	~Video();
+	string getTitle() {
+		return title;
+	}
 
 private:
 	
@@ -25,7 +29,7 @@ private:
 	vector<Comment> comments;
 };
 
-Video::Video(string title,string userId,string profilePicture,string videoUrl,string thumbnailUrl,vector<Comment> comments)
+Video::Video(string title,string userId,string profilePicture,string videoUrl,string thumbnailUrl)
 {
 	this->id = "sdfnsdfipnspiuhoiuhseijufnsdfjb";
 	this->title = title;
@@ -36,7 +40,6 @@ Video::Video(string title,string userId,string profilePicture,string videoUrl,st
 	this->views = 0;
 	this->thumbnailUrl = thumbnailUrl;
 	this->uploadDate = "Today";
-	this->comments = comments;
 
 }
 
@@ -53,3 +56,4 @@ Video::~Video()
 	free(&uploadDate);
 	free(&comments);
 }
+*/
