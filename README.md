@@ -1,2 +1,7 @@
 # RestApi
-- Bischen mit C++ spielen
+## C++ Progress
+ - [ ] pointer
+ - [x] vectors
+ - [ ] REST api mit Crow
+ - [x] Namespace
+ - [ ] Objects

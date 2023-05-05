@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Comment.cpp" />
+    <ClCompile Include="Rechteck.cpp" />
     <ClCompile Include="Video.cpp" />
     <ClCompile Include="VideoController.cpp" />
     <ClCompile Include="RestApi.cpp" />
