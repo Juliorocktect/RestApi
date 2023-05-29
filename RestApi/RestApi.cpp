@@ -33,28 +33,75 @@ namespace first
     {
         std::cout << "sui";
     }
+   
 
 }
-int main()
-{
-    // crow::SimpleApp app;
-    // app.port(18080).multithreaded().run();
-    // Video video ("hallo","hallo","hallo","hallo","hallo");
-    // std::cout << video.getTitle();
-    std::cout << "Hallo\n";
-    first::printS();
-    int numberInput = 0;
-    std::cin >> numberInput;
-    first::pushBack(numberInput);
-    first::age = &numberInput;
-    int &MyAge = *first::age;
-    std::cout << MyAge << std::endl;
-    std::vector<string> stringVector;
-    stringVector.push_back("sadfsdf");
-    stringVector.push_back("abc");
-    stringVector = first::swap(stringVector, 0, 1);
-    for (int i = 0; i < stringVector.size(); i++)
+
+
+
+
+    class Roller {
+    private:
+        double tankgroesse, tankinhalt;
+        int kilometerstand;
+    public:
+        Roller(double tankgroesse, int kilometerstand, double tankinhalt) {
+            this->tankgroesse = tankgroesse;
+            this->kilometerstand = kilometerstand;
+            this->tankinhalt = tankinhalt;
+        }
+        ~Roller() {
+            delete& tankgroesse;
+        }
+        void tanke(double menge) {
+            if (tankgroesse < tankinhalt + menge) {
+                std::cout << "Zu viel getankt";
+            }
+            else {
+                tankinhalt + menge;
+            }
+        }
+        double getTankinhalt() {
+            return tankinhalt;
+        }
+    };
+
+namespace service {
+    class RollerService {
+    private:
+
+    };
+
+}
+   
+    int main()
     {
-        std::cout << stringVector[i] << std::endl;
-    }
+        
+       
+
+
+    crow::SimpleApp app; //define your crow application
+
+    //define your endpoint at the root directory
+    CROW_ROUTE(app, "/")([]() {
+        return "Hello world";
+        });
+    CROW_ROUTE(app, "/add/<int>/<int>").methods(crow::HTTPMethod::GET)
+        ([](int a, int b)
+            {
+                return std::to_string(a + b);
+            });
+    CROW_ROUTE(app, "newRoller/<double>/<int>/<double>").methods(crow::HTTPMethod::POST)([](double tankinhalt, int kilometerstand, double tankgroesse)
+        {
+            Roller newRoller(tankinhalt, kilometerstand, tankgroesse);
+        });
+    CROW_ROUTE(app, "/getTankinhalt")
+        ([]()
+        {
+            return "Sui";
+        });
+    //set the port, set the app to run on multiple threads, and run the app
+    app.port(8080).multithreaded().run();
+
+
 }
